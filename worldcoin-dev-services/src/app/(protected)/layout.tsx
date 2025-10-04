@@ -1,5 +1,6 @@
 import { auth } from '@/auth';
 import { Page } from '@/components/PageLayout';
+import Image from 'next/image';
 
 export default async function TabsLayout({
   children,
@@ -23,11 +24,16 @@ export default async function TabsLayout({
               <div className="flex justify-between items-center p-4">
                 <div className="flex items-center space-x-3">
                   {session.user.profilePictureUrl && (
-                    <img
-                      src={session.user.profilePictureUrl}
-                      alt="Profile"
-                      className="w-10 h-10 rounded-full border-2 border-blue-500"
-                    />
+                    <div className="relative w-10 h-10">
+                      <Image
+                        src={session.user.profilePictureUrl}
+                        alt="Profile"
+                        width={40}
+                        height={40}
+                        className="rounded-full border-2 border-blue-500"
+                        priority
+                      />
+                    </div>
                   )}
                   <div>
                     <p className="text-white font-medium">
