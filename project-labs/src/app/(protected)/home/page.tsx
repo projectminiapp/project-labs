@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { UserInfo } from '@/components/UserInfo';
 import { Page } from '@/components/PageLayout';
 import { Button, TopBar } from '@worldcoin/mini-apps-ui-kit-react';
-import { LanguageSelector } from '@/components/LanguageSelector';
+import { LanguageSelector, useLanguage } from '@/components/LanguageSelector';
 import '@/app/scroll.css';
 
 const services = [
@@ -28,22 +28,24 @@ const services = [
 ];
 
 export default function Home() {
+  const { translations } = useLanguage();
+
   return (
-    <Page>
+    <Page className="page-gradient">
       <Page.Header className="p-0">
         <TopBar
           title=""
           startAdornment={<UserInfo />}
           endAdornment={<LanguageSelector />}
-          className="backdrop-blur-lg bg-black/20"
+          className="header-fixed"
         />
       </Page.Header>
-      <Page.Main className="snap-container">
+      <Page.Main className="snap-container pt-16">
         {/* Hero Section */}
         <section className="snap-section h-[100dvh] flex flex-col justify-center px-6">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-emerald-500/20 opacity-30" />
-            <div className="absolute inset-0 backdrop-blur-[100px]" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-white/5" />
+            <div className="absolute inset-0 backdrop-blur-3xl" />
           </div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -51,19 +53,25 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">
-              Mini Apps Development
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-white mb-4">
+              {translations.hero.title}
             </h1>
             <p className="text-gray-300 text-base mx-auto mb-8">
-              Expertos en desarrollo con World ID y SDK de WorldCoin
+              {translations.hero.subtitle}
             </p>
-            <Button variant="primary" size="lg">Comienza tu Proyecto</Button>
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={() => console.log('Iniciar proyecto')}
+            >
+              {translations.start}
+            </Button>
           </motion.div>
         </section>
 
         {/* Services Section */}
         <section className="snap-section min-h-[100dvh] px-6 py-8">
-          <h2 className="text-xl font-semibold mb-6">Nuestros Servicios</h2>
+          <h2 className="text-xl font-semibold mb-6">{translations.services}</h2>
           <div className="grid grid-cols-1 gap-4">
             {services.map((service, index) => (
               <motion.div
