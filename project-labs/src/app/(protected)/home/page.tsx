@@ -31,7 +31,7 @@ export default function Home() {
     <Page>
       <Page.Header className="p-0">
         <TopBar
-          title="WorldCoin Dev Services"
+          title=""
           endAdornment={<UserInfo />}
         />
       </Page.Header>
