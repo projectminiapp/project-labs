@@ -7,13 +7,8 @@ const nextConfig: NextConfig = {
   },
   allowedDevOrigins: ['*'],
   reactStrictMode: false,
-  swcMinify: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
   experimental: {
     optimizeCss: true,
-    optimizeServerReact: true,
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
