@@ -1,0 +1,11 @@
+/* Estilos globales para el manejo de scroll en móviles */
+@layer utilities {
+  .snap-container {
+    @apply scroll-smooth snap-y snap-mandatory overflow-y-auto h-[100dvh] w-screen;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-section {
+    @apply snap-start snap-always;
+  }
+}
