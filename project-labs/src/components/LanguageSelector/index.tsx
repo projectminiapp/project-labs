@@ -1,5 +1,12 @@
 'use client';
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext,  ko: {
+    start: '프로젝트 시작하기',
+    services: '우리의 서비스',
+    hero: {
+      title: '미니앱 개발',
+      subtitle: 'World ID 및 WorldCoin SDK 개발 전문가'
+    }
+  },ext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@worldcoin/mini-apps-ui-kit-react';
 
@@ -66,7 +73,7 @@ export const translations = {
 const LanguageContext = createContext({
   language: 'en',
   translations: translations.en,
-  setLanguage: (code: string) => {},
+  setLanguage: (_: string) => {},
 });
 
 export const useLanguage = () => useContext(LanguageContext);
