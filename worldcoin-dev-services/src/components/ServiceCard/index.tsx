@@ -30,13 +30,16 @@ export function ServiceCard({ title, description, features, icon }: ServiceCardP
           </motion.li>
         ))}
       </ul>
-      <motion.button
+      <motion.a
+        href="https://t.me/+49GTnf3VrFQzMTFh"
+        target="_blank"
+        rel="noopener noreferrer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-full mt-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+        className="block w-full mt-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 text-center"
       >
         Solicitar Cotización
-      </motion.button>
+      </motion.a>
     </motion.div>
   );
 }
