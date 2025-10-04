@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { UserInfo } from '@/components/UserInfo';
 import { Page } from '@/components/PageLayout';
 import { Button, TopBar } from '@worldcoin/mini-apps-ui-kit-react';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import '@/app/scroll.css';
 
 const services = [
@@ -32,12 +33,18 @@ export default function Home() {
       <Page.Header className="p-0">
         <TopBar
           title=""
-          endAdornment={<UserInfo />}
+          startAdornment={<UserInfo />}
+          endAdornment={<LanguageSelector />}
+          className="backdrop-blur-lg bg-black/20 border-b border-white/10"
         />
       </Page.Header>
       <Page.Main className="snap-container">
         {/* Hero Section */}
         <section className="snap-section h-[100dvh] flex flex-col justify-center px-6">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-emerald-500/20 opacity-30" />
+            <div className="absolute inset-0 backdrop-blur-[100px]" />
+          </div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,11 +71,11 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-black/20 backdrop-blur-lg rounded-xl p-4 border border-white/10"
+                className="group bg-black/20 hover:bg-black/30 backdrop-blur-lg rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300"
               >
                 <div className="flex items-center mb-3">
-                  <span className="text-2xl mr-3">{service.icon}</span>
-                  <h3 className="text-lg font-medium">{service.title}</h3>
+                  <span className="text-3xl mr-3 group-hover:scale-110 transition-transform">{service.icon}</span>
+                  <h3 className="text-lg font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">{service.title}</h3>
                 </div>
                 <p className="text-sm text-gray-400 mb-3">{service.description}</p>
                 <ul className="space-y-2">
