@@ -24,11 +24,6 @@ export function UserInfo() {
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('language');
-    if (savedLang) {
-      setCurrentLang(savedLang);
-    }
-
     // Recuperar el idioma guardado
     const savedLang = localStorage.getItem('language');
     if (savedLang) {
