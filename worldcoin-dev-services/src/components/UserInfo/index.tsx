@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../providers/auth';
-import { useState, useEffect, memo } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 interface Language {
   code: string;
@@ -20,14 +19,9 @@ const SUPPORTED_LANGUAGES: Language[] = [
   { code: 'ko', name: '한국어', flag: '🇰🇷' }
 ];
 
-const UserInfo = memo(function UserInfo() {
+export function UserInfo() {
   const { user } = useAuth();
-  const [currentLang, setCurrentLang] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('language') || 'es';
-    }
-    return 'es';
-  });
+  const [currentLang, setCurrentLang] = useState('es');
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
@@ -54,20 +48,13 @@ const UserInfo = memo(function UserInfo() {
         <div className="flex items-center space-x-3">
           {user.profilePictureUrl && (
             <div className="relative">
-              <motion.div
+              <motion.img 
+                src={user.profilePictureUrl} 
+                alt="Profile"
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="w-10 h-10 relative"
-              >
-                <Image
-                  src={user.profilePictureUrl}
-                  alt="Profile"
-                  width={40}
-                  height={40}
-                  className="rounded-full ring-2 ring-blue-500/50 ring-offset-2 ring-offset-transparent"
-                  priority
-                />
-              </motion.div>
+                className="w-10 h-10 rounded-full ring-2 ring-blue-500/50 ring-offset-2 ring-offset-transparent"
+              />
               <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black/20"></div>
             </div>
           )}
@@ -137,6 +124,4 @@ const UserInfo = memo(function UserInfo() {
       </div>
     </div>
   );
-});
-
-export { UserInfo };
+}

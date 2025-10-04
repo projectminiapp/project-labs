@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { UserInfo } from '../../../components/UserInfo';
+import { UserInfo } from '@/components/UserInfo';
 import { ServiceCard } from '../../../components/ServiceCard';
 
 const services = [
