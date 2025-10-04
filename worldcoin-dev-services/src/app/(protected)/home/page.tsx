@@ -1,8 +1,13 @@
 'use client';
-
+import { walletAuth } from '@/auth/wallet';
+import { Button, LiveFeedback } from '@worldcoin/mini-apps-ui-kit-react';
+import { useMiniKit } from '@worldcoin/minikit-js/minikit-provider';
+import { useCallback, useEffect, useState } from 'react';
+import { MiniKit } from '@worldcoin/minikit-js';
 import { motion } from 'framer-motion';
-import { UserInfo } from '@/components/UserInfo';
-import { ServiceCard } from '@/components/ServiceCard';
+import { useAuth } from '@/providers/auth';
+import { UserInfo } from '../../../components/UserInfo';
+import { ServiceCard } from '../../../components/ServiceCard';
 
 const services = [
   {
