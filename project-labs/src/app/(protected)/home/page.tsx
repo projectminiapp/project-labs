@@ -35,7 +35,7 @@ export default function Home() {
           title=""
           startAdornment={<UserInfo />}
           endAdornment={<LanguageSelector />}
-          className="backdrop-blur-lg bg-black/20 border-b border-white/10"
+          className="backdrop-blur-lg bg-black/20"
         />
       </Page.Header>
       <Page.Main className="snap-container">
