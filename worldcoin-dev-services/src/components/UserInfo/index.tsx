@@ -1,19 +1,12 @@
 'use client';
 
-import { MiniKit } from '@worldcoin/minikit-js';
-import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../../providers/auth';
 
 interface Language {
   code: string;
   name: string;
   flag: string;
-}
-
-interface User {
-  username: string;
-  walletAddress: string;
-  profilePictureUrl?: string;
 }
 
 const SUPPORTED_LANGUAGES: Language[] = [
@@ -26,17 +19,14 @@ const SUPPORTED_LANGUAGES: Language[] = [
 ];
 
 export function UserInfo() {
-  const [user, setUser] = useState<User | null>(null);
-  const [currentLang, setCurrentLang] = useState<string>('es');
-  const [isLangOpen, setIsLangOpen] = useState<boolean>(false);
+  const { user } = useAuth();
+  const [currentLang, setCurrentLang] = useState('es');
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
-    if (MiniKit.isInstalled() && MiniKit.user) {
-      setUser({
-        username: MiniKit.user.username || 'Usuario',
-        walletAddress: MiniKit.user.walletAddress || '0x0000',
-        profilePictureUrl: MiniKit.user.profilePictureUrl
-      });
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+      setCurrentLang(savedLang);
     }
 
     // Recuperar el idioma guardado

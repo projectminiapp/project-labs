@@ -1,8 +1,9 @@
 'use client';
-import { walletAuth } from '@/auth/wallet';
-import { Button, LiveFeedback } from '@worldcoin/mini-apps-ui-kit-react';
-import { useMiniKit } from '@worldcoin/minikit-js/minikit-provider';
-import { useCallback, useEffect, useState } from 'react';
+
+import { MiniKit } from '@worldcoin/minikit-js';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useAuth } from '../../providers/auth';
 
 /**
  * This component is an example of how to authenticate a user

@@ -1,8 +1,6 @@
-import { auth } from '@/auth';
-import ClientProviders from '@/providers';
-import '@worldcoin/mini-apps-ui-kit-react/styles.css';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist } from 'next/font/google';
+import { Providers } from '../providers';
 import './globals.css';
 
 const geistSans = Geist({
@@ -27,9 +25,11 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} `}>
-        <ClientProviders session={session}>{children}</ClientProviders>
+    <html lang="es" className={geistSans.variable}>
+      <body className={geistSans.className}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
