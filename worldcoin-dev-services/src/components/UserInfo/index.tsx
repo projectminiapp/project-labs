@@ -4,7 +4,19 @@ import { MiniKit } from '@worldcoin/minikit-js';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const SUPPORTED_LANGUAGES = [
+interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
+
+interface User {
+  username: string;
+  walletAddress: string;
+  profilePictureUrl?: string;
+}
+
+const SUPPORTED_LANGUAGES: Language[] = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -14,15 +26,15 @@ const SUPPORTED_LANGUAGES = [
 ];
 
 export function UserInfo() {
-  const [user, setUser] = useState<any>(null);
-  const [currentLang, setCurrentLang] = useState('es');
-  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [currentLang, setCurrentLang] = useState<string>('es');
+  const [isLangOpen, setIsLangOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (MiniKit.isInstalled() && MiniKit.user) {
       setUser({
-        username: MiniKit.user.username,
-        walletAddress: MiniKit.user.walletAddress,
+        username: MiniKit.user.username || 'Usuario',
+        walletAddress: MiniKit.user.walletAddress || '0x0000',
         profilePictureUrl: MiniKit.user.profilePictureUrl
       });
     }
