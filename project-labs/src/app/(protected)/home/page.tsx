@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import { UserInfo } from '@/components/UserInfo';
 import { Page } from '@/components/PageLayout';
 import { Button, TopBar } from '@worldcoin/mini-apps-ui-kit-react';
-import { type ReactNode } from 'react';
-import '../scroll.css';
+import '@/app/scroll.css';
 
 const services = [
   {
