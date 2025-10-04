@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../providers/auth';
+import { useState, useEffect } from 'react';
 
 interface Language {
   code: string;
