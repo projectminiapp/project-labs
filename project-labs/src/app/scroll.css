@@ -1,28 +1,34 @@
-/* Estilos globales para el manejo de scroll en móviles */
-@layer utilities {
-  .snap-container {
-    @apply scroll-smooth snap-y snap-mandatory overflow-y-auto h-[100dvh] w-screen;
-    -webkit-overflow-scrolling: touch;
-  }
+.snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: 100dvh;
+  width: 100vw;
+  -webkit-overflow-scrolling: touch;
+}
 
-  .snap-section {
-    @apply snap-start snap-always;
-  }
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 
-  .header-fixed {
-    @apply fixed top-0 left-0 right-0 z-50;
-    background: linear-gradient(to right, rgba(29, 78, 216, 0.95), rgba(17, 24, 39, 0.95));
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: linear-gradient(to right, rgba(29, 78, 216, 0.95), rgba(17, 24, 39, 0.95));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-  .page-gradient {
-    background: 
-      radial-gradient(circle at 0% 0%, rgba(29, 78, 216, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(17, 24, 39, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
-    background-color: #111827;
-  }
+.page-gradient {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(29, 78, 216, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(17, 24, 39, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+  background-color: #111827;
 }

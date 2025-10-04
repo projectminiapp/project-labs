@@ -29,16 +29,13 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en">
-              className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <ClientProviders>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <ClientProviders session={session}>
           <LanguageProvider>
             {children}
           </LanguageProvider>
         </ClientProviders>
       </body>
-    </html>
-  );
     </html>
   );
 }
