@@ -27,7 +27,7 @@ const services = [
 
 export default function ProtectedHome() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       {/* Fondo animado */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
@@ -60,15 +60,13 @@ export default function ProtectedHome() {
         </div>
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 border-b border-white/10 backdrop-blur-md">
-        <div className="container mx-auto">
-          <UserInfo />
-        </div>
+      {/* Header Fijo */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur-md bg-black/20">
+        <UserInfo />
       </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 md:py-16">
+      {/* Main Content con padding-top para el header fijo */}
+      <main className="flex-1 overflow-y-auto container mx-auto px-4 pt-24 pb-8 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -119,8 +117,8 @@ export default function ProtectedHome() {
       </main>
       
       {/* Footer */}
-      <footer className="border-t border-white/10 mt-12 md:mt-20">
-        <div className="container mx-auto px-4 py-6 md:py-8">
+      <footer className="border-t border-white/10 bg-black/20 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-4 md:py-6">
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
